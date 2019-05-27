@@ -1,0 +1,25 @@
+# File: amc_card.substitutions
+# Date: 2017-06-20
+# Author: Wayne Lewis
+#
+# Description:
+# Substitution file for generating full crate of AMC slots
+#
+
+file amc_card.template 
+{
+pattern
+{ S,         AMC_SLOT,  PM_CH }
+{ "SLOT01:", 1,         "05"  }
+{ "SLOT02:", 2,         "06"  }
+{ "SLOT03:", 3,         "07"  }
+{ "SLOT04:", 4,         "08"  }
+{ "SLOT05:", 5,         "09"  }
+{ "SLOT06:", 6,         "10"  }
+{ "SLOT07:", 7,         "11"  }
+{ "SLOT08:", 8,         "12"  }
+{ "SLOT09:", 9,         "13"  }
+{ "SLOT10:", 10,        "14"  }
+{ "SLOT11:", 11,        "15"  }
+{ "SLOT12:", 12,        "16"  }
+}
