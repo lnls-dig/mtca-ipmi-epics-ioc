@@ -899,9 +899,9 @@ class MTCACrate():
         #print('populate_fru_list: frus_inited = {}'.format(self.frus_inited))
         #print('populate_fru_list: crate_resetting = {}'.format(self.crate_resetting))
         #print('populate_fru_list: mch_comms.connected = {}'.format(self.mch_comms.connected))
-        if (self.host != None 
-                and self.user != None 
-                and self.password != None 
+        if (self.host != None
+                and self.user != None
+                and self.password != None
                 and not self.crate_resetting
                 and self.mch_comms.connected):
 
@@ -964,11 +964,11 @@ class MTCACrate():
                 #print('read_sensors: call read_sensors')
                 for fru in self.frus:
                     #print('read_sensors: fru = {}'.format(fru))
-                    self.frus[fru].read_sensors()   
+                    self.frus[fru].read_sensors()
             else:
                 #print('read_sensors: call set_sensors_invalid')
                 for fru in self.frus:
-                    self.frus[fru].set_sensors_invalid()   
+                    self.frus[fru].set_sensors_invalid()
         except KeyError as e:
             print('read_sensors: caught KeyError {}'.format(e))
 
@@ -997,7 +997,6 @@ class MTCACrate():
         for mch in range(1,3):
             try:
                 result = self.mch_comms.call_ipmitool_command(["fru", "print", str(mch + MCH_FRU_ID_OFFSET)])
-
                 for line in result.splitlines():
                     if FW_TAG in line:
                         match = re.match(pattern, line)
@@ -1008,8 +1007,8 @@ class MTCACrate():
                             self.mch_fw_ver[mch] = "Unknown"
                             self.mch_fw_date[mch] = "Unknown"
             except CalledProcessError as e:
-                        self.mch_fw_ver[mch] = "Unknown"
-                        self.mch_fw_date[mch] = "Unknown"
+                self.mch_fw_ver[mch] = "Unknown"
+                self.mch_fw_date[mch] = "Unknown"
             except TimeoutExpired as e:
                 print("read_fw_version: caught TimeoutExpired exception: {}".format(e))
 
@@ -1221,7 +1220,7 @@ class MTCACrateReader():
             Nothing
         """
         # This requires a connection reset to force the MCH
-        # to update the Sensor Data Record cache for the 
+        # to update the Sensor Data Record cache for the
         # ipmitool shell connection
         self.crate.fru_rescan = True
         self.crate.mch_comms.ipmitool_shell_disconnect()
