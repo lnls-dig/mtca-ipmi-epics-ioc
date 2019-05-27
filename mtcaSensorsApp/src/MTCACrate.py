@@ -24,7 +24,7 @@ from devsup.db import IOScanListBlock
 from devsup.hooks import addHook
 
 if os.name == 'posix' and sys.version_info[0] < 3:
-    import subproces32 as subprocess
+    import subprocess32 as subprocess
     from subprocess32 import check_output
     from subprocess32 import CalledProcessError
     from subprocess32 import TimeoutExpired
