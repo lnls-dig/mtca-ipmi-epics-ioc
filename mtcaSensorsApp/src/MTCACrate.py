@@ -159,6 +159,25 @@ SENSOR_NAMES = {
     ,'Ejector Handle': 'HOT_SWAP'
     ,'HotSwap': 'HOT_SWAP'
     ,'Hot Swap': 'HOT_SWAP'
+#AFC Sensors
+    ,'FMC1 +12V': 'FMC1_12V'
+    ,'FMC1 VADJ': 'FMC1_VADJ'
+    ,'FMC1 +3.3V': 'FMC1_3V3'
+    ,'FMC1 +12V Curr': 'FMC1_12V_Curr'
+    ,'FMC1 VADJ Curr': 'FMC1_VADJ_Curr'
+    ,'FMC1 +3.3V Curr': 'FMC1_3V3_Curr'
+    ,'FMC2 +12V': 'FMC2_12V'
+    ,'FMC2 VADJ': 'FMC2_VADJ'
+    ,'FMC2 +3.3V': 'FMC2_3V3'
+    ,'FMC2 +12V Curr': 'FMC2_12V_Curr'
+    ,'FMC2 VADJ Curr': 'FMC2_VADJ_Curr'
+    ,'FMC2 +3.3V Curr': 'FMC2_3V3_Curr'
+    ,'TEMP FPGA': 'TEMP_FPGA'
+    ,'TEMP UC': 'TEMP_UC'
+    ,'TEMP CLK SWITCH': 'TEMP_CLK_SW'
+    ,'TEMP DCDC': 'TEMP_DCDC'
+    ,'TEMP RAM': 'TEMP_RAM'
+    ,'HOTSWAP AMC': 'HOT_SWAP'
 }
 
 DIGITAL_SENSORS = [
