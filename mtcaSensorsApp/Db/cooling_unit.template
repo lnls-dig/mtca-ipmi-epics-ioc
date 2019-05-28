@@ -15,7 +15,7 @@
 # Modifications:
 # 2017-12-08	WL	Add fan averages
 
-record(ai, "$(P)$(S)12V0") {
+record(ai, "$(P)$(S)Volt12V-Mon") {
     field(DESC, "12 V supply (0)")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -25,7 +25,7 @@ record(ai, "$(P)$(S)12V0") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)12V0_1") {
+record(ai, "$(P)$(S)Volt12V1-Mon") {
     field(DESC, "12 V supply (1)")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -35,7 +35,7 @@ record(ai, "$(P)$(S)12V0_1") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)3V3") {
+record(ai, "$(P)$(S)Volt3V3-Mon") {
     field(DESC, "3.3 V supply")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -45,7 +45,7 @@ record(ai, "$(P)$(S)3V3") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)TEMP1") {
+record(ai, "$(P)$(S)Temp1-Mon") {
     field(DESC, "Temperature 1")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -55,7 +55,7 @@ record(ai, "$(P)$(S)TEMP1") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)TEMP2") {
+record(ai, "$(P)$(S)Temp2-Mon") {
     field(DESC, "Temperature 2")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -65,7 +65,7 @@ record(ai, "$(P)$(S)TEMP2") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)FAN1") {
+record(ai, "$(P)$(S)Fan1-Mon") {
     field(DESC, "Fan 1")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -75,7 +75,7 @@ record(ai, "$(P)$(S)FAN1") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)FAN2") {
+record(ai, "$(P)$(S)Fan2-Mon") {
     field(DESC, "Fan 2")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -85,7 +85,7 @@ record(ai, "$(P)$(S)FAN2") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)FAN3") {
+record(ai, "$(P)$(S)Fan3-Mon") {
     field(DESC, "Fan 3")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -95,7 +95,7 @@ record(ai, "$(P)$(S)FAN3") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)FAN4") {
+record(ai, "$(P)$(S)Fan4-Mon") {
     field(DESC, "Fan 4")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -105,7 +105,7 @@ record(ai, "$(P)$(S)FAN4") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)FAN5") {
+record(ai, "$(P)$(S)Fan5-Mon") {
     field(DESC, "Fan 5")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -115,7 +115,7 @@ record(ai, "$(P)$(S)FAN5") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)FAN6") {
+record(ai, "$(P)$(S)Fan6-Mon") {
     field(DESC, "Fan 6")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -126,19 +126,19 @@ record(ai, "$(P)$(S)FAN6") {
 }
 
 # Calculate fan speed averages
-record(calcout, "$(P)$(S)FAN_FRONT_AVG_CALC") {
+record(calcout, "$(P)$(S)FanFrontAvg-Calc") {
 		field(DESC, "Front fan average calculation")
-		field(INPA, "$(P)$(S)FAN1 CPP")
-		field(INPB, "$(P)$(S)FAN2 CPP")
-		field(INPC, "$(P)$(S)FAN3 CPP")
+		field(INPA, "$(P)$(S)Fan1-Mon CPP")
+		field(INPB, "$(P)$(S)Fan2-Mon CPP")
+		field(INPC, "$(P)$(S)Fan3-Mon CPP")
 		field(CALC, "(A+B+C)/3")
 		field(OOPT, "On Change")
 		field(DOPT, "Use CALC")
-		field(OUT,  "$(P)$(S)FAN_FRONT_AVG PP")
+		field(OUT,  "$(P)$(S)FanFrontAvg-Mon PP")
 		field(PINI, "YES")
 }
 
-record(ai, "$(P)$(S)FAN_FRONT_AVG") {
+record(ai, "$(P)$(S)FanFrontAvg-Mon") {
 		field(DESC, "Front fan average")
 		field(EGU,  "RPM")
 		field(LOLO, "500")
@@ -151,19 +151,19 @@ record(ai, "$(P)$(S)FAN_FRONT_AVG") {
 		field(HHSV, "MAJOR")
 }
 
-record(calcout, "$(P)$(S)FAN_REAR_AVG_CALC") {
+record(calcout, "$(P)$(S)FanRearAvg-Calc") {
 		field(DESC, "Rear fan average calculation")
-		field(INPA, "$(P)$(S)FAN4 CPP")
-		field(INPB, "$(P)$(S)FAN5 CPP")
-		field(INPC, "$(P)$(S)FAN6 CPP")
+		field(INPA, "$(P)$(S)Fan4 CPP")
+		field(INPB, "$(P)$(S)Fan5 CPP")
+		field(INPC, "$(P)$(S)Fan6 CPP")
 		field(CALC, "(A+B+C)/3")
 		field(OOPT, "On Change")
 		field(DOPT, "Use CALC")
-		field(OUT,  "$(P)$(S)FAN_REAR_AVG PP")
+		field(OUT,  "$(P)$(S)FanRearAvg-Mon PP")
 		field(PINI, "YES")
 }
 
-record(ai, "$(P)$(S)FAN_REAR_AVG") {
+record(ai, "$(P)$(S)FanRearAvg-Mon") {
 		field(DESC, "Rear fan average")
 		field(EGU,  "RPM")
 		field(LOLO, "500")
@@ -177,20 +177,20 @@ record(ai, "$(P)$(S)FAN_REAR_AVG") {
 }
 
 # Calculate overall average from front and rear average.
-# No need to PINI this record as it will be triggered by the 
+# No need to PINI this record as it will be triggered by the
 # other two records on initialization.
-record(calcout, "$(P)$(S)FAN_AVG_CALC") {
+record(calcout, "$(P)$(S)FanAvg-Calc") {
 		field(DESC, "All fan average calculation")
-		field(INPA, "$(P)$(S)FAN_FRONT_AVG CPP")
-		field(INPB, "$(P)$(S)FAN_REAR_AVG CPP")
+		field(INPA, "$(P)$(S)FanFrontAvg-Mon CPP")
+		field(INPB, "$(P)$(S)FanRearAvg-Mon CPP")
 		field(CALC, "(A+B)/2")
 		field(OOPT, "On Change")
 		field(DOPT, "Use CALC")
-		field(OUT,  "$(P)$(S)FAN_AVG PP")
+		field(OUT,  "$(P)$(S)FanAvg-Mon PP")
 		field(PINI, "NO")
 }
 
-record(ai, "$(P)$(S)FAN_AVG") {
+record(ai, "$(P)$(S)FanAvg-Mon") {
 		field(DESC, "All fan average")
 		field(EGU,  "RPM")
 		field(LOLO, "500")
@@ -203,14 +203,14 @@ record(ai, "$(P)$(S)FAN_AVG") {
 		field(HHSV, "MAJOR")
 }
 
-record(stringin, "$(P)$(S)NAME") {
+record(stringin, "$(P)$(S)Name-Cte") {
     field(DESC, "Card name")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
     field(INP,  "@MTCACrate get_name cu $(UNIT)")
 }
 
-record(ai, "$(P)$(S)SLOT") {
+record(ai, "$(P)$(S)Slot-Cte") {
     field(DESC, "Slot number")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -219,7 +219,7 @@ record(ai, "$(P)$(S)SLOT") {
     field(EGU,  "None")
 }
 
-#record(bi, "$(P)$(S)HOT_SWAP") {
+#record(bi, "$(P)$(S)HotSwap-Sts") {
     #field(DESC, "Hot swap status")
     #field(DTYP, "Python Device")
     #field(SCAN, "I/O Intr")
@@ -230,7 +230,7 @@ record(ai, "$(P)$(S)SLOT") {
     #field(OSV,  "NO_ALARM")
 #}
 
-record(mbbi, "$(P)$(S)STATUS") {
+record(mbbi, "$(P)$(S)SlotAlarm-Sts") {
     field(DESC, "Slot alarm status")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -253,8 +253,8 @@ record(mbbi, "$(P)$(S)STATUS") {
 
     info(archive,"monitor:5.0")
 }
-    
-record(bi, "$(P)$(S)COMMS_STS") {
+
+record(bi, "$(P)$(S)Comm-Sts") {
 	field(DESC, "$(S) communications status")
 	field(DTYP, "Python Device")
 	field(SCAN, "I/O Intr")

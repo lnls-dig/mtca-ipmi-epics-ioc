@@ -7,9 +7,9 @@
 #
 # Macros:
 # P:        PV prefix
-# MCH_SLOT: MCH slot number 
+# MCH_SLOT: MCH slot number
 
-record(ai, "$(P)$(S)12V0") {
+record(ai, "$(P)$(S)Volt12V-Mon") {
     field(DESC, "12 V supply")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -19,7 +19,7 @@ record(ai, "$(P)$(S)12V0") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)3V3") {
+record(ai, "$(P)$(S)Volt3V3-Mon") {
     field(DESC, "3.3 V supply")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -29,7 +29,7 @@ record(ai, "$(P)$(S)3V3") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)2V5") {
+record(ai, "$(P)$(S)Volt2V5-Mon") {
     field(DESC, "2.5 V supply")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -39,7 +39,7 @@ record(ai, "$(P)$(S)2V5") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)1V8") {
+record(ai, "$(P)$(S)Volt1V8-Mon") {
     field(DESC, "1.8 V supply")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -49,7 +49,7 @@ record(ai, "$(P)$(S)1V8") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)1V5") {
+record(ai, "$(P)$(S)Volt1V5-Mon") {
     field(DESC, "1.5 V supply")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -59,7 +59,7 @@ record(ai, "$(P)$(S)1V5") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)1V2") {
+record(ai, "$(P)$(S)Volt1V2-Mon") {
     field(DESC, "1.2 V supply")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -69,7 +69,7 @@ record(ai, "$(P)$(S)1V2") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)V_FPGA") {
+record(ai, "$(P)$(S)VoltFPGA-Mon") {
     field(DESC, "FPGA supply")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -79,7 +79,7 @@ record(ai, "$(P)$(S)V_FPGA") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)12V0CURRENT") {
+record(ai, "$(P)$(S)Curr12V-Mon") {
     field(DESC, "12 V current")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -89,7 +89,7 @@ record(ai, "$(P)$(S)12V0CURRENT") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)3V3CURRENT") {
+record(ai, "$(P)$(S)Curr3V3-Mon") {
     field(DESC, "3.3 V current")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -99,7 +99,7 @@ record(ai, "$(P)$(S)3V3CURRENT") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)TEMP_INLET") {
+record(ai, "$(P)$(S)TempInlet-Mon") {
     field(DESC, "Inlet Temperature")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -109,7 +109,7 @@ record(ai, "$(P)$(S)TEMP_INLET") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)TEMP_OUTLET") {
+record(ai, "$(P)$(S)TempOutlet-Mon") {
     field(DESC, "Outlet Temperature")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -119,7 +119,7 @@ record(ai, "$(P)$(S)TEMP_OUTLET") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)TEMP_FPGA") {
+record(ai, "$(P)$(S)TempFPGA-Mon") {
     field(DESC, "FPGA Temperature")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -129,7 +129,7 @@ record(ai, "$(P)$(S)TEMP_FPGA") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)TEMP1") {
+record(ai, "$(P)$(S)Temp1-Mon") {
     field(DESC, "Temperature 1")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -139,7 +139,7 @@ record(ai, "$(P)$(S)TEMP1") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)TEMP2") {
+record(ai, "$(P)$(S)Temp2-Mon") {
     field(DESC, "Temperature 2")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -149,7 +149,7 @@ record(ai, "$(P)$(S)TEMP2") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)TEMP3") {
+record(ai, "$(P)$(S)Temp3-Mon") {
     field(DESC, "Temperature 3")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -159,14 +159,14 @@ record(ai, "$(P)$(S)TEMP3") {
     info(archive,"monitor:5.0")
 }
 
-record(stringin, "$(P)$(S)NAME") {
+record(stringin, "$(P)$(S)Name-Cte") {
     field(DESC, "Card name")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
     field(INP,  "@MTCACrate get_name mch $(MCH_SLOT)")
 }
 
-record(ai, "$(P)$(S)SLOT") {
+record(ai, "$(P)$(S)Slot-Cte") {
     field(DESC, "Slot number")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -175,7 +175,7 @@ record(ai, "$(P)$(S)SLOT") {
     field(EGU,  "None")
 }
 
-record(ai, "$(P)$(S)HOT_SWAP") {
+record(ai, "$(P)$(S)HotSwap-Mon") {
     field(DESC, "Hot swap")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -184,7 +184,7 @@ record(ai, "$(P)$(S)HOT_SWAP") {
     field(EGU,  "None")
 }
 
-record(mbbi, "$(P)$(S)HOT_SWAP_STS") {
+record(mbbi, "$(P)$(S)HotSwap-Sts") {
     field(DESC, "Hot swap status")
     field(INP,  "$(P)$(S)HOT_SWAP CPP")
     field(ZRVL, "0")
@@ -198,7 +198,7 @@ record(mbbi, "$(P)$(S)HOT_SWAP_STS") {
     field(TWSV, "MAJOR")
 }
 
-record(mbbi, "$(P)$(S)STATUS") {
+record(mbbi, "$(P)$(S)SlotAlarm-Sts") {
     field(DESC, "Slot alarm status")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -221,8 +221,8 @@ record(mbbi, "$(P)$(S)STATUS") {
 
     info(archive,"monitor:5.0")
 }
-    
-record(mbbi, "$(P)$(S)COMMS_STS") {
+
+record(mbbi, "$(P)$(S)Comm-Sts") {
     field(DESC, "$(S) communications status")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -240,21 +240,21 @@ record(mbbi, "$(P)$(S)COMMS_STS") {
     info(archive,"monitor:5.0")
 }
 
-record(stringin, "$(P)$(S)FW_VER") {
+record(stringin, "$(P)$(S)FwVer-Cte") {
     field(DESC, "Firmware version")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
     field(INP,  "@MTCACrate get_fw_ver mch $(MCH_SLOT)")
 }
 
-record(stringin, "$(P)$(S)FW_DATE") {
+record(stringin, "$(P)$(S)FwDate-Cte") {
     field(DESC, "Firmware date")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
     field(INP,  "@MTCACrate get_fw_date mch $(MCH_SLOT)")
 }
 
-record(ai, "$(P)$(S)UPTIME") {
+record(ai, "$(P)$(S)Uptime-Mon") {
     field(DESC, "MCH uptime")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -263,7 +263,7 @@ record(ai, "$(P)$(S)UPTIME") {
     field(INP,  "@MTCACrate get_uptime mch $(MCH_SLOT)")
 }
 
-record(bi, "$(P)$(S)STS") {
+record(bi, "$(P)$(S)CardStatus-Sts") {
 	field(DESC, "$(S) card status")
 	field(ZNAM, "Off")
 	field(ONAM, "On")

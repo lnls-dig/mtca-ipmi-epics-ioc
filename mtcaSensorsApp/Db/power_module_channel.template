@@ -3,14 +3,14 @@
 # Author: Wayne Lewis
 #
 # Description:
-# Database MTCA crate power module current channel 
+# Database MTCA crate power module current channel
 #
 # Macros:
 # P:    PV prefix
-# UNIT: Power module number 
+# UNIT: Power module number
 # CH:	Power module current channel
 
-record(ai, "$(P)$(S)I$(CH)") {
+record(ai, "$(P)$(S)Curr$(CH)-Mon") {
     field(DESC, "Ch$(CH) Current")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -20,7 +20,7 @@ record(ai, "$(P)$(S)I$(CH)") {
     info(archive,"monitor:5.0")
 }
 
-record(calcout, "$(P)$(S)I$(CH)_CALC") {
+record(calcout, "$(P)$(S)Curr$(CH)-Calc") {
     field(DESC, "Ch$(CH) current status calc")
     field(INPA, "$(P)$(S)I$(CH) CPP")
     field(INPB, "0.1")
@@ -31,7 +31,7 @@ record(calcout, "$(P)$(S)I$(CH)_CALC") {
     info(autosaveFields, "INPB")
 }
 
-record(bi, "$(P)$(S)I$(CH)_STS") {
+record(bi, "$(P)$(S)Ch$(CH)-Sts") {
     field(DESC, "Ch$(CH) current status")
     field(ZNAM, "Off")
     field(ONAM, "On")
