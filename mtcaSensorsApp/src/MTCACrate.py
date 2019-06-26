@@ -396,11 +396,17 @@ class MCH_comms():
             command = self.create_ipmitool_command()
             command.append("shell")
 
+            # Set inputrc path to limit libreadline's history-size and prevent
+            # ever-growing memory usage
+            ipmi_env = os.environ.copy()
+            ipmi_env['INPUTRC'] = os.path.join(ipmi_env['TOP'], 'inputrc')
+
             self.ipmitool_shell = subprocess.Popen(
                     command,
                     stdin=subprocess.PIPE,
                     stdout=subprocess.PIPE,
-                    stderr=subprocess.PIPE)
+                    stderr=subprocess.PIPE,
+                    env=ipmi_env)
 
             # Set up the queue and thread to monitor the stdout pipe
             q = Queue.Queue()
