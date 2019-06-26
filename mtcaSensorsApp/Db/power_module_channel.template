@@ -22,10 +22,10 @@ record(ai, "$(P)$(S)Curr$(CH)-Mon") {
 
 record(calcout, "$(P)$(S)Curr$(CH)-Calc") {
     field(DESC, "Ch$(CH) current status calc")
-    field(INPA, "$(P)$(S)I$(CH) CPP")
+    field(INPA, "$(P)$(S)Curr$(CH)-Mon CPP")
     field(INPB, "0.1")
     field(CALC, "A>B?1:0")
-    field(OUT,  "$(P)$(S)I$(CH)_STS PP")
+    field(OUT,  "$(P)$(S)Ch$(CH)-Sts PP")
     field(OOPT, "On Change")
 
     info(autosaveFields, "INPB")

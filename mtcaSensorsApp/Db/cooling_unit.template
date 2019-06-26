@@ -153,9 +153,9 @@ record(ai, "$(P)$(S)FanFrontAvg-Mon") {
 
 record(calcout, "$(P)$(S)FanRearAvg-Calc") {
 		field(DESC, "Rear fan average calculation")
-		field(INPA, "$(P)$(S)Fan4 CPP")
-		field(INPB, "$(P)$(S)Fan5 CPP")
-		field(INPC, "$(P)$(S)Fan6 CPP")
+		field(INPA, "$(P)$(S)Fan4-Mon CPP")
+		field(INPB, "$(P)$(S)Fan5-Mon CPP")
+		field(INPC, "$(P)$(S)Fan6-Mon CPP")
 		field(CALC, "(A+B+C)/3")
 		field(OOPT, "On Change")
 		field(DOPT, "Use CALC")

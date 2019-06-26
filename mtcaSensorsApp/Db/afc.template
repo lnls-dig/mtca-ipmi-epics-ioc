@@ -206,7 +206,7 @@ record(ai, "$(P)$(S)HotSwap-Mon") {
 
 record(mbbi, "$(P)$(S)HotSwap-Sts") {
 	field(DESC, "Hot swap status")
-	field(INP,  "$(P)$(S)HOT_SWAP CPP")
+	field(INP,  "$(P)$(S)HotSwap-Mon CPP")
 	field(ZRVL, "0")
 	field(ZRST, "N/A")
 	field(ZRSV, "NO_ALARM")
@@ -218,7 +218,7 @@ record(mbbi, "$(P)$(S)HotSwap-Sts") {
 	field(TWSV, "MAJOR")
 }
 
-record(mbbi, "$(P)$(S)Status") {
+record(mbbi, "$(P)$(S)Alarm-Sts") {
 	field(DESC, "Slot alarm status")
 	field(DTYP, "Python Device")
 	field(SCAN, "I/O Intr")
@@ -266,10 +266,10 @@ record(bo, "$(P)$(S)Reset-Cmd") {
 	field(OUT,  "@MTCACrate reset amc $(AMC_SLOT)")
 }
 
-record(bi, "$(P)$(S)Sts") {
-	field(DESC, "$(S) card status")
+record(bi, "$(P)$(S)Power-Sts") {
+	field(DESC, "$(S) card power status")
 	field(ZNAM, "Off")
 	field(ONAM, "On")
-	field(INP,  "$(P)$(PM)I$(PM_CH)_STS CPP")
+	field(INP,  "$(P)$(PM)Ch$(PM_CH)-Sts CPP")
 }
 

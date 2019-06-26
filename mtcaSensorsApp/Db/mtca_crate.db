@@ -76,12 +76,12 @@ record(stringin, "$(P)RackID-Cte") {
 # Calculate fan speed averages
 record(calcout, "$(P)FanFrontAvg-Calc") {
     field(DESC, "Front fan average calculation")
-    field(INPA, "$(P)$(CU1=CU01:)FanFrontAvg-Mon CPP")
-    field(INPB, "$(P)$(CU2=CU02:)FanFrontAvg-Mon CPP")
+    field(INPA, "$(P)$(CU1=CU01)FanFrontAvg-Mon CPP")
+    field(INPB, "$(P)$(CU2=CU02)FanFrontAvg-Mon CPP")
     field(CALC, "(A+B)/2")
     field(OOPT, "On Change")
     field(DOPT, "Use CALC")
-    field(OUT,  "$(P)FAN_FRONT_AVG PP")
+    field(OUT,  "$(P)FanFrontAvg-Mon PP")
     field(PINI, "NO")
 }
 
@@ -101,12 +101,12 @@ record(ai, "$(P)FanFrontAvg-Mon") {
 
 record(calcout, "$(P)FanRearAvg-Calc") {
     field(DESC, "Rear fan average calculation")
-    field(INPA, "$(P)$(CU1=CU01:)FanRearAvg-Mon CPP")
-    field(INPB, "$(P)$(CU2=CU02:)FanRearAvg-Mon CPP")
+    field(INPA, "$(P)$(CU1=CU01)FanRearAvg-Mon CPP")
+    field(INPB, "$(P)$(CU2=CU02)FanRearAvg-Mon CPP")
     field(CALC, "(A+B)/2")
     field(OOPT, "On Change")
     field(DOPT, "Use CALC")
-    field(OUT,  "$(P)FAN_REAR_AVG PP")
+    field(OUT,  "$(P)FanRearAvg-Mon PP")
     field(PINI, "NO")
 }
 
@@ -126,8 +126,8 @@ record(ai, "$(P)FanRearAvg-Mon") {
 
 record(calcout, "$(P)FanAvg-Calc") {
     field(DESC, "Crate fan average calculation")
-    field(INPA, "$(P)$(CU1=CU01:)FanAvg-Mon CPP")
-    field(INPB, "$(P)$(CU2=CU02:)FanAvg-Mon CPP")
+    field(INPA, "$(P)$(CU1=CU01)FanAvg-Mon CPP")
+    field(INPB, "$(P)$(CU2=CU02)FanAvg-Mon CPP")
     field(CALC, "(A+B)/2")
     field(OOPT, "On Change")
     field(DOPT, "Use CALC")
@@ -152,11 +152,11 @@ record(ai, "$(P)FanAvg-Mon") {
 # Calculate the average inlet temperature
 record(calcout, "$(P)TempInletAvg-Calc") {
     field(DESC, "Crate average inlet temp calc")
-    field(INPA, "$(P)PM02:TempInlet-Mon CPP")
-    field(INPB, "$(P)CU02:Temp1-Mon CPP")
-    field(INPC, "$(P)CU02:Temp2-Mon CPP")
-    field(INPD, "$(P)CU01:Temp1-Mon CPP")
-    field(INPE, "$(P)CU01:Temp2-Mon CPP")
+    field(INPA, "$(P)PM02TempInlet-Mon CPP")
+    field(INPB, "$(P)CU02Temp1-Mon CPP")
+    field(INPC, "$(P)CU02Temp2-Mon CPP")
+    field(INPD, "$(P)CU01Temp1-Mon CPP")
+    field(INPE, "$(P)CU01Temp2-Mon CPP")
     field(CALC, "(A-4+B+C+D+E-1.5)/5")
     field(OOPT, "On Change")
     field(DOPT, "Use CALC")
