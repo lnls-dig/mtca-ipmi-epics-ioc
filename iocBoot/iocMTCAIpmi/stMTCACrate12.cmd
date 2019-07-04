@@ -2,10 +2,6 @@
 < envPaths
 
 epicsEnvSet("TOP","../..")
-epicsEnvSet("CRATE", "DIG:MCH_TEST:")
-epicsEnvSet("MCH_HOST", "10.2.118.35")
-epicsEnvSet("CRATE_ID", "MTCA RSV")
-epicsEnvSet("RACK_ID", "Dev net")
 
 < MTCAIpmi.config
 
