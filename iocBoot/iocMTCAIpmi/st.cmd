@@ -7,7 +7,7 @@ epicsEnvSet("MCH_HOST", "10.2.118.35")
 epicsEnvSet("CRATE_ID", "MTCA RSV")
 epicsEnvSet("RACK_ID", "Dev net")
 
-< MTCA_IPMI.config
+< MTCAIpmi.config
 
 ## Register all support components
 dbLoadDatabase "dbd/mtcaSensors.dbd"
