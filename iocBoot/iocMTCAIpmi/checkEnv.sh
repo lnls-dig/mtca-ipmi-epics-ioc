@@ -1,6 +1,6 @@
 #!/bin/sh
 
-IOC_NAME="dmm7510"
+IOC_NAME="mtcaSensors"
 
 IOC_BOOT_DIR="$(dirname "$0")"
 IOC_BIN_DIR="$IOC_BOOT_DIR/../../bin"
