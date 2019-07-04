@@ -26,7 +26,7 @@ mkdir -p "$INSTALL_DIR"
 
 # Copy generated EPICS files
 for dir in bin lib db dbd; do
-    cp -r "$TOP_DIR/$dir" "$INSTALL_DIR"
+    cp -r "$TOP_DIR/$dir" "$INSTALL_DIR" || true
 done
 
 ### *App files ###
