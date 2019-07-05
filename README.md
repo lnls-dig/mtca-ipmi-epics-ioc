@@ -9,10 +9,15 @@ This IOC monitors the sensors in an MTCA crate.
 ### Command line tools
 - ``ipmitool`` 
 
+Needed libs for ipmitool:
+
+    libncurses5-dev
+    libreadline-dev
+
 This has been tested against ipmitool version 1.8.11 Recommended version is
 1.8.11. This can be built from source at:
 
-https://sourceforge.net/projects/ipmitool/files/ipmitool/1.8.17/ipmitool-1.8.11.tar.bz2
+https://sourceforge.net/projects/ipmitool/files/ipmitool/1.8.11/ipmitool-1.8.11.tar.bz2
 
 1.8.14 breaks the alarm settings part. 1.8.14 is installed by apt-get on
 jessie.
@@ -32,7 +37,7 @@ $ sudo apt-get install gnome-terminal
 
 ### EPICS modules
 
-- ``pyDevSup`` 
+- ``pyDevSup (needs python-dev)``
 - ``autosave``
 
 ### Python packages
@@ -55,7 +60,4 @@ for the new crate.
 
 Most of the IOC commands are in the common startup script located in
 $(TOP)/iocBoot/ioc-mtca-common/st-mtca-common.cmd
-
-
-
 

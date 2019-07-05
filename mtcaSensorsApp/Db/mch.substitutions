@@ -6,9 +6,9 @@
 # Substitution file for generating MCH records
 #
 
-file mch.template 
+file mch.template
 {
-pattern
-{ S,        MCH_SLOT, PM_CH }
-{ "MCH01:", 0,        "01"}
+        pattern
+        { S,        MCH_SLOT, PM_CH }
+        { "MCH01", 0,        "01"}
 }

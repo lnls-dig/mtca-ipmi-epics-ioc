@@ -27,7 +27,6 @@ mtcaSensors_SRCS += mtcaSensors_registerRecordDeviceDriver.cpp
 mtcaSensors_SRCS_DEFAULT += mtcaSensorsMain.cpp
 mtcaSensors_SRCS_vxWorks += -nil-
 
-#PY += FRU.py
 PY += MTCACrate.py
 
 # Finally link to the EPICS Base libraries
@@ -35,7 +34,6 @@ mtcaSensors_LIBS += $(EPICS_BASE_IOC_LIBS)
 
 #===========================
 
-include $(DIAGSTD)/configure/fribdiagstdMakefile
 include $(TOP)/configure/RULES
 include $(PYDEVSUP)/configure/RULES_PY
 #----------------------------------------

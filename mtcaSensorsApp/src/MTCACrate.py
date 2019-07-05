@@ -24,7 +24,7 @@ from devsup.db import IOScanListBlock
 from devsup.hooks import addHook
 
 if os.name == 'posix' and sys.version_info[0] < 3:
-    import subproces32 as subprocess
+    import subprocess32 as subprocess
     from subprocess32 import check_output
     from subprocess32 import CalledProcessError
     from subprocess32 import TimeoutExpired
@@ -159,6 +159,25 @@ SENSOR_NAMES = {
     ,'Ejector Handle': 'HOT_SWAP'
     ,'HotSwap': 'HOT_SWAP'
     ,'Hot Swap': 'HOT_SWAP'
+#AFC Sensors
+    ,'FMC1 +12V': 'FMC1_12V'
+    ,'FMC1 VADJ': 'FMC1_VADJ'
+    ,'FMC1 +3.3V': 'FMC1_3V3'
+    ,'FMC1 +12V Curr': 'FMC1_12V_Curr'
+    ,'FMC1 VADJ Curr': 'FMC1_VADJ_Curr'
+    ,'FMC1 +3.3V Curr': 'FMC1_3V3_Curr'
+    ,'FMC2 +12V': 'FMC2_12V'
+    ,'FMC2 VADJ': 'FMC2_VADJ'
+    ,'FMC2 +3.3V': 'FMC2_3V3'
+    ,'FMC2 +12V Curr': 'FMC2_12V_Curr'
+    ,'FMC2 VADJ Curr': 'FMC2_VADJ_Curr'
+    ,'FMC2 +3.3V Curr': 'FMC2_3V3_Curr'
+    ,'TEMP FPGA': 'TEMP_FPGA'
+    ,'TEMP UC': 'TEMP_UC'
+    ,'TEMP CLK SWITCH': 'TEMP_CLK_SW'
+    ,'TEMP DCDC': 'TEMP_DCDC'
+    ,'TEMP RAM': 'TEMP_RAM'
+    ,'HOTSWAP AMC': 'HOT_SWAP'
 }
 
 DIGITAL_SENSORS = [
@@ -377,11 +396,17 @@ class MCH_comms():
             command = self.create_ipmitool_command()
             command.append("shell")
 
+            # Set inputrc path to limit libreadline's history-size and prevent
+            # ever-growing memory usage
+            ipmi_env = os.environ.copy()
+            ipmi_env['INPUTRC'] = os.path.join(ipmi_env['TOP'], 'inputrc')
+
             self.ipmitool_shell = subprocess.Popen(
                     command,
                     stdin=subprocess.PIPE,
                     stdout=subprocess.PIPE,
-                    stderr=subprocess.PIPE)
+                    stderr=subprocess.PIPE,
+                    env=ipmi_env)
 
             # Set up the queue and thread to monitor the stdout pipe
             q = Queue.Queue()
@@ -790,6 +815,44 @@ class FRU():
                     # Traps lines that cannot be split. Be silent.
                     pass
 
+    def deactivate(self):
+        """
+        Function to deactivate AMC card
+
+        Args:
+            name: sensor name
+
+        Returns:
+            Nothing
+        """
+        # Deactivate the card
+        try:
+            result = self.mch_comms.call_ipmitool_command(["picmg", "deactivate", (str(self.slot + PICMG_SLOT_OFFSET))])
+        except CalledProcessError:
+            pass
+        except TimeoutExpired as e:
+            print("reset: caught TimeoutExpired exception: {}".format(e))
+
+
+    def activate(self):
+        """
+        Function to activate AMC card
+
+        Args:
+            name: sensor name
+
+        Returns:
+            Nothing
+        """
+
+        # Activate the card
+        try:
+            result = self.mch_comms.call_ipmitool_command(["picmg", "activate", str(self.slot + PICMG_SLOT_OFFSET)])
+        except CalledProcessError:
+            pass
+        except TimeoutExpired as e:
+            print("reset: caught TimeoutExpired exception: {}".format(e))
+
     def reset(self):
         """
         Function to reset AMC card
@@ -800,28 +863,16 @@ class FRU():
         Returns:
             Nothing
         """
-
-        # Deactivate the card
-        try:
-            result = self.mch_comms.call_ipmitool_command(["picmg", "deactivate", (str(self.slot + PICMG_SLOT_OFFSET))])
-        except CalledProcessError:
-            pass
-        except TimeoutExpired as e:
-            print("reset: caught TimeoutExpired exception: {}".format(e))
-
+        # Deactivate card
+        self.deactivate()
         # TODO: Add a resetting status here to allow other reads to wait
         # See DIAG-68.
 
         # Wait for the card to shut down
         time.sleep(2.0)
 
-        # Activate the card
-        try:
-            result = self.mch_comms.call_ipmitool_command(["picmg", "activate", str(self.slot + PICMG_SLOT_OFFSET)])
-        except CalledProcessError:
-            pass
-        except TimeoutExpired as e:
-            print("reset: caught TimeoutExpired exception: {}".format(e))
+        #Activate card
+        self.activate()
 
 class MTCACrate():
     """
@@ -899,9 +950,9 @@ class MTCACrate():
         #print('populate_fru_list: frus_inited = {}'.format(self.frus_inited))
         #print('populate_fru_list: crate_resetting = {}'.format(self.crate_resetting))
         #print('populate_fru_list: mch_comms.connected = {}'.format(self.mch_comms.connected))
-        if (self.host != None 
-                and self.user != None 
-                and self.password != None 
+        if (self.host != None
+                and self.user != None
+                and self.password != None
                 and not self.crate_resetting
                 and self.mch_comms.connected):
 
@@ -964,11 +1015,11 @@ class MTCACrate():
                 #print('read_sensors: call read_sensors')
                 for fru in self.frus:
                     #print('read_sensors: fru = {}'.format(fru))
-                    self.frus[fru].read_sensors()   
+                    self.frus[fru].read_sensors()
             else:
                 #print('read_sensors: call set_sensors_invalid')
                 for fru in self.frus:
-                    self.frus[fru].set_sensors_invalid()   
+                    self.frus[fru].set_sensors_invalid()
         except KeyError as e:
             print('read_sensors: caught KeyError {}'.format(e))
 
@@ -997,7 +1048,6 @@ class MTCACrate():
         for mch in range(1,3):
             try:
                 result = self.mch_comms.call_ipmitool_command(["fru", "print", str(mch + MCH_FRU_ID_OFFSET)])
-
                 for line in result.splitlines():
                     if FW_TAG in line:
                         match = re.match(pattern, line)
@@ -1008,8 +1058,8 @@ class MTCACrate():
                             self.mch_fw_ver[mch] = "Unknown"
                             self.mch_fw_date[mch] = "Unknown"
             except CalledProcessError as e:
-                        self.mch_fw_ver[mch] = "Unknown"
-                        self.mch_fw_date[mch] = "Unknown"
+                self.mch_fw_ver[mch] = "Unknown"
+                self.mch_fw_date[mch] = "Unknown"
             except TimeoutExpired as e:
                 print("read_fw_version: caught TimeoutExpired exception: {}".format(e))
 
@@ -1221,7 +1271,7 @@ class MTCACrateReader():
             Nothing
         """
         # This requires a connection reset to force the MCH
-        # to update the Sensor Data Record cache for the 
+        # to update the Sensor Data Record cache for the
         # ipmitool shell connection
         self.crate.fru_rescan = True
         self.crate.mch_comms.ipmitool_shell_disconnect()
@@ -1477,6 +1527,36 @@ class MTCACrateReader():
         # Check if the card exists
         if (self.bus, self.slot) in self.crate.frus.keys():
             self.crate.frus[(self.bus, self.slot)].reset()
+
+    def activate(self, rec, report):
+        """
+        Activate AMC card
+
+        Args:
+            rec: pyDevSup record object
+
+        Returns:
+            Nothing
+        """
+
+        # Check if the card exists
+        if (self.bus, self.slot) in self.crate.frus.keys():
+            self.crate.frus[(self.bus, self.slot)].activate()
+
+    def deactivate(self, rec, report):
+        """
+        Deactivate AMC card
+
+        Args:
+            rec: pyDevSup record object
+
+        Returns:
+            Nothing
+        """
+
+        # Check if the card exists
+        if (self.bus, self.slot) in self.crate.frus.keys():
+            self.crate.frus[(self.bus, self.slot)].deactivate()
 
     def crate_reset(self, rec, report):
         """

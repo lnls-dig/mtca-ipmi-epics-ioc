@@ -13,3 +13,5 @@ as/
 .cproject
 .project
 .settings/
+*~
+configure/RELEASE.*

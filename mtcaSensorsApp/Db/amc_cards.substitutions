@@ -6,20 +6,20 @@
 # Substitution file for generating full crate of AMC slots
 #
 
-file amc_card.template 
+file afc.template
 {
-pattern
-{ S,         AMC_SLOT,  PM_CH }
-{ "SLOT01:", 1,         "05"  }
-{ "SLOT02:", 2,         "06"  }
-{ "SLOT03:", 3,         "07"  }
-{ "SLOT04:", 4,         "08"  }
-{ "SLOT05:", 5,         "09"  }
-{ "SLOT06:", 6,         "10"  }
-{ "SLOT07:", 7,         "11"  }
-{ "SLOT08:", 8,         "12"  }
-{ "SLOT09:", 9,         "13"  }
-{ "SLOT10:", 10,        "14"  }
-{ "SLOT11:", 11,        "15"  }
-{ "SLOT12:", 12,        "16"  }
+        pattern
+        { S,         AMC_SLOT,  PM_CH }
+        { "AMC01", 1,         "05"  }
+        { "AMC02", 2,         "06"  }
+        { "AMC03", 3,         "07"  }
+        { "AMC04", 4,         "08"  }
+        { "AMC05", 5,         "09"  }
+        { "AMC06", 6,         "10"  }
+        { "AMC07", 7,         "11"  }
+        { "AMC08", 8,         "12"  }
+        { "AMC09", 9,         "13"  }
+        { "AMC10", 10,        "14"  }
+        { "AMC11", 11,        "15"  }
+        { "AMC12", 12,        "16"  }
 }

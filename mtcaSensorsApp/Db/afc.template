@@ -1,0 +1,286 @@
+# File: amc_card.template
+# Date: 2017-06-19
+# Author: Wayne Lewis
+#
+# Description:
+# Database for getting generic MTCA AMC card IPMI data
+#
+# Macros:
+# P:		PV prefix
+# AMC_SLOT:	AMC slot number
+
+record(ai, "$(P)$(R)$(S)FMC1Volt12V-Mon") {
+	field(DESC, "FMC1 12 V supply")
+	field(DTYP, "Python Device")
+	field(SCAN, "I/O Intr")
+	field(INP,  "@MTCACrate get_val amc $(AMC_SLOT) FMC1_12V")
+	field(PREC, "2")
+
+	info(archive,"monitor:5.0")
+}
+
+record(ai, "$(P)$(R)$(S)FMC1VoltVADJ-Mon") {
+	field(DESC, "FMC1 2.5 V supply")
+	field(DTYP, "Python Device")
+	field(SCAN, "I/O Intr")
+	field(INP,  "@MTCACrate get_val amc $(AMC_SLOT) FMC1_VADJ")
+	field(PREC, "2")
+
+	info(archive,"monitor:5.0")
+}
+
+record(ai, "$(P)$(R)$(S)FMC1Volt3V3-Mon") {
+	field(DESC, "FMC1 3.3 V supply")
+	field(DTYP, "Python Device")
+	field(SCAN, "I/O Intr")
+	field(INP,  "@MTCACrate get_val amc $(AMC_SLOT) FMC1_3V3")
+	field(PREC, "2")
+
+	info(archive,"monitor:5.0")
+}
+
+record(ai, "$(P)$(R)$(S)FMC1Curr12V-Mon") {
+	field(DESC, "FMC1 12V Current")
+	field(DTYP, "Python Device")
+	field(SCAN, "I/O Intr")
+	field(INP,  "@MTCACrate get_val amc $(AMC_SLOT) FMC1_12V_Curr")
+	field(PREC, "2")
+
+	info(archive,"monitor:5.0")
+}
+
+record(ai, "$(P)$(R)$(S)FMC1CurrVADJ-Mon") {
+	field(DESC, "FMC1 2.5V current")
+	field(DTYP, "Python Device")
+	field(SCAN, "I/O Intr")
+	field(INP,  "@MTCACrate get_val amc $(AMC_SLOT) FMC1_VADJ_Curr")
+	field(PREC, "2")
+
+	info(archive,"monitor:5.0")
+}
+
+record(ai, "$(P)$(R)$(S)FMC1Curr3V3-Mon") {
+	field(DESC, "FMC1 3.3V current")
+	field(DTYP, "Python Device")
+	field(SCAN, "I/O Intr")
+	field(INP,  "@MTCACrate get_val amc $(AMC_SLOT) FMC1_3V3_Curr")
+	field(PREC, "2")
+
+	info(archive,"monitor:5.0")
+}
+
+record(ai, "$(P)$(R)$(S)FMC2Volt12V-Mon") {
+	field(DESC, "FMC2 12 V supply")
+	field(DTYP, "Python Device")
+	field(SCAN, "I/O Intr")
+	field(INP,  "@MTCACrate get_val amc $(AMC_SLOT) FMC2_12V")
+	field(PREC, "2")
+
+	info(archive,"monitor:5.0")
+}
+
+record(ai, "$(P)$(R)$(S)FMC2VoltVADJ-Mon") {
+	field(DESC, "FMC2 2.5 V supply")
+	field(DTYP, "Python Device")
+	field(SCAN, "I/O Intr")
+	field(INP,  "@MTCACrate get_val amc $(AMC_SLOT) FMC2_VADJ")
+	field(PREC, "2")
+
+	info(archive,"monitor:5.0")
+}
+
+record(ai, "$(P)$(R)$(S)FMC2Volt3V3-Mon") {
+	field(DESC, "FMC2 3.3 V supply")
+	field(DTYP, "Python Device")
+	field(SCAN, "I/O Intr")
+	field(INP,  "@MTCACrate get_val amc $(AMC_SLOT) FMC2_3V3")
+	field(PREC, "2")
+
+	info(archive,"monitor:5.0")
+}
+
+record(ai, "$(P)$(R)$(S)FMC2Curr12V-Mon") {
+	field(DESC, "FMC2 12V Current")
+	field(DTYP, "Python Device")
+	field(SCAN, "I/O Intr")
+	field(INP,  "@MTCACrate get_val amc $(AMC_SLOT) FMC2_12V_Curr")
+	field(PREC, "2")
+
+	info(archive,"monitor:5.0")
+}
+
+record(ai, "$(P)$(R)$(S)FMC2CurrVADJ-Mon") {
+	field(DESC, "FMC2 2.5V current")
+	field(DTYP, "Python Device")
+	field(SCAN, "I/O Intr")
+	field(INP,  "@MTCACrate get_val amc $(AMC_SLOT) FMC2_VADJ_Curr")
+	field(PREC, "2")
+
+	info(archive,"monitor:5.0")
+}
+
+record(ai, "$(P)$(R)$(S)FMC2Curr3V3-Mon") {
+	field(DESC, "FMC2 3.3V current")
+	field(DTYP, "Python Device")
+	field(SCAN, "I/O Intr")
+	field(INP,  "@MTCACrate get_val amc $(AMC_SLOT) FMC2_3V3_Curr")
+	field(PREC, "2")
+
+	info(archive,"monitor:5.0")
+}
+
+record(ai, "$(P)$(R)$(S)TempFPGA-Mon") {
+	field(DESC, "FPGA Die Temperature")
+	field(DTYP, "Python Device")
+	field(SCAN, "I/O Intr")
+	field(INP,  "@MTCACrate get_val amc $(AMC_SLOT) TEMP_FPGA")
+	field(PREC, "1")
+
+	info(archive,"monitor:5.0")
+}
+
+record(ai, "$(P)$(R)$(S)TempUC-Mon") {
+	field(DESC, "Temperature uC")
+	field(DTYP, "Python Device")
+	field(SCAN, "I/O Intr")
+	field(INP,  "@MTCACrate get_val amc $(AMC_SLOT) TEMP_UC")
+	field(PREC, "1")
+
+	info(archive,"monitor:5.0")
+}
+
+record(ai, "$(P)$(R)$(S)TempClkSw-Mon") {
+	field(DESC, "Temperature Clock Switch")
+	field(DTYP, "Python Device")
+	field(SCAN, "I/O Intr")
+	field(INP,  "@MTCACrate get_val amc $(AMC_SLOT) TEMP_CLK_SW")
+	field(PREC, "1")
+
+	info(archive,"monitor:5.0")
+}
+
+record(ai, "$(P)$(R)$(S)TempDCDC-Mon") {
+	field(DESC, "Temperature DCDC")
+	field(DTYP, "Python Device")
+	field(SCAN, "I/O Intr")
+	field(INP,  "@MTCACrate get_val amc $(AMC_SLOT) TEMP_DCDC")
+	field(PREC, "1")
+
+	info(archive,"monitor:5.0")
+}
+
+record(ai, "$(P)$(R)$(S)TempRAM-Mon") {
+	field(DESC, "Temperature RAM")
+	field(DTYP, "Python Device")
+	field(SCAN, "I/O Intr")
+	field(INP,  "@MTCACrate get_val amc $(AMC_SLOT) TEMP_RAM")
+	field(PREC, "1")
+
+	info(archive,"monitor:5.0")
+}
+
+record(stringin, "$(P)$(R)$(S)BoardName-Cte") {
+	field(DESC, "Card name")
+	field(DTYP, "Python Device")
+	field(SCAN, "I/O Intr")
+	field(INP,  "@MTCACrate get_name amc $(AMC_SLOT)")
+}
+
+record(ai, "$(P)$(R)$(S)Slot-Cte") {
+	field(DESC, "Slot number")
+	field(DTYP, "Python Device")
+	field(SCAN, "I/O Intr")
+	field(INP,  "@MTCACrate get_slot amc $(AMC_SLOT)")
+	field(PREC, "0")
+	field(EGU,  "None")
+}
+
+record(ai, "$(P)$(R)$(S)HotSwap-Mon") {
+	field(DESC, "Hot swap")
+	field(DTYP, "Python Device")
+	field(SCAN, "I/O Intr")
+	field(INP,  "@MTCACrate get_val amc $(AMC_SLOT) HOT_SWAP")
+	field(PREC, "0")
+	field(EGU,  "None")
+}
+
+record(mbbi, "$(P)$(R)$(S)HotSwap-Sts") {
+	field(DESC, "Hot swap status")
+	field(INP,  "$(P)$(R)$(S)HotSwap-Mon CPP")
+	field(ZRVL, "0")
+	field(ZRST, "N/A")
+	field(ZRSV, "NO_ALARM")
+	field(ONVL, "1")
+	field(ONST, "OK")
+	field(ONSV, "NO_ALARM")
+	field(TWVL, "2")
+	field(TWST, "Fault")
+	field(TWSV, "MAJOR")
+}
+
+record(mbbi, "$(P)$(R)$(S)Alarm-Sts") {
+	field(DESC, "Slot alarm status")
+	field(DTYP, "Python Device")
+	field(SCAN, "I/O Intr")
+	field(INP,  "@MTCACrate get_status amc $(AMC_SLOT)")
+	field(ZRVL, "0")
+	field(ZRST, "UNSET")
+	field(ZRSV, "NO_ALARM")
+	field(ONVL, "1")
+	field(ONST, "NO_ALARM")
+	field(ONSV, "NO_ALARM")
+	field(TWVL, "2")
+	field(TWST, "NON_CRITICAL")
+	field(TWSV, "MINOR")
+	field(THVL, "3")
+	field(THST, "CRITICAL")
+	field(THSV, "MAJOR")
+	field(FRVL, "4")
+	field(FRST, "NON_RECOVERABLE")
+	field(FRSV, "MAJOR")
+
+	info(archive,"monitor:5.0")
+}
+
+record(mbbi, "$(P)$(R)$(S)Comm-Sts") {
+	field(DESC, "$(S) communications status")
+	field(DTYP, "Python Device")
+	field(SCAN, "I/O Intr")
+	field(INP,  "@MTCACrate get_comms_sts amc $(AMC_SLOT)")
+	field(ZRVL, "0")
+	field(ZRST, "Error")
+	field(ZRSV,  "MAJOR")
+	field(ONVL, "1")
+	field(ONST, "OK")
+	field(ONSV,  "NO_ALARM")
+	field(TWVL, "2")
+	field(TWST, "N/A")
+	field(TWSV,  "NO_ALARM")
+
+	info(archive,"monitor:5.0")
+}
+
+record(bo, "$(P)$(R)$(S)Reset-Cmd") {
+	field(DESC, "Reset $(S)")
+	field(DTYP, "Python Device")
+	field(OUT,  "@MTCACrate reset amc $(AMC_SLOT)")
+}
+
+record(bo, "$(P)$(R)$(S)Activate-Cmd") {
+	field(DESC, "Activate $(S)")
+	field(DTYP, "Python Device")
+	field(OUT,  "@MTCACrate activate amc $(AMC_SLOT)")
+}
+
+record(bo, "$(P)$(R)$(S)Deactivate-Cmd") {
+	field(DESC, "Deactivate $(S)")
+	field(DTYP, "Python Device")
+	field(OUT,  "@MTCACrate deactivate amc $(AMC_SLOT)")
+}
+
+record(bi, "$(P)$(R)$(S)Power-Sts") {
+	field(DESC, "$(S) card power status")
+	field(ZNAM, "Off")
+	field(ONAM, "On")
+	field(INP,  "$(P)$(R)$(PM)Ch$(PM_CH)-Sts CPP")
+}

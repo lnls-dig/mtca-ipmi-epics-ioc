@@ -1,0 +1,22 @@
+[Unit]
+Description=MTCA IPMI IOC %p%I
+After=rc-local.service
+Wants=rc-local.service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+# Source environment
+EnvironmentFile=/etc/sysconfig/mtca-ipmi-epics-ioc
+EnvironmentFile=/etc/sysconfig/mtca-ipmi-epics-ioc-mapping
+# Execute pre with root
+PermissionsStartOnly=true
+Environment=MTCA_IPMI_INSTANCE=%i
+ExecStartPre=/bin/mkdir -p /var/log/procServ/%p%i
+ExecStartPre=/bin/mkdir -p /var/run/procServ/%p%i
+WorkingDirectory=<INSTALL_PREFIX>/<IOC_NAME>/iocBoot/ioc-mtca-lnls-ipmi
+# Run procServ with IOC
+ExecStart="/usr/local/bin/runMTCAIPMI.sh"
+
+[Install]
+WantedBy=multi-user.target
