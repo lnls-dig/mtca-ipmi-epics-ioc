@@ -6,8 +6,8 @@ epicsEnvSet("TOP","../..")
 < MTCAIpmi.config
 
 ## Register all support components
-dbLoadDatabase "dbd/mtcaSensors.dbd"
-mtcaSensors_registerRecordDeviceDriver pdbbase
+dbLoadDatabase("${TOP}/dbd/mtcaSensors.dbd",0,0)
+mtcaSensors_registerRecordDeviceDriver(pdbbase)
 
 ## Load record instances
 # Set CU1, CU2 environment variables to override default cooling unit names.
