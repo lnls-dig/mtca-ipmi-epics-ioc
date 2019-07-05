@@ -266,10 +266,21 @@ record(bo, "$(P)$(R)$(S)Reset-Cmd") {
 	field(OUT,  "@MTCACrate reset amc $(AMC_SLOT)")
 }
 
+record(bo, "$(P)$(R)$(S)Activate-Cmd") {
+	field(DESC, "Activate $(S)")
+	field(DTYP, "Python Device")
+	field(OUT,  "@MTCACrate activate amc $(AMC_SLOT)")
+}
+
+record(bo, "$(P)$(R)$(S)Deactivate-Cmd") {
+	field(DESC, "Deactivate $(S)")
+	field(DTYP, "Python Device")
+	field(OUT,  "@MTCACrate deactivate amc $(AMC_SLOT)")
+}
+
 record(bi, "$(P)$(R)$(S)Power-Sts") {
 	field(DESC, "$(S) card power status")
 	field(ZNAM, "Off")
 	field(ONAM, "On")
 	field(INP,  "$(P)$(R)$(PM)Ch$(PM_CH)-Sts CPP")
 }
-

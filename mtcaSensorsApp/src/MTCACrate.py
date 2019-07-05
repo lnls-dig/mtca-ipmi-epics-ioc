@@ -815,6 +815,44 @@ class FRU():
                     # Traps lines that cannot be split. Be silent.
                     pass
 
+    def deactivate(self):
+        """
+        Function to deactivate AMC card
+
+        Args:
+            name: sensor name
+
+        Returns:
+            Nothing
+        """
+        # Deactivate the card
+        try:
+            result = self.mch_comms.call_ipmitool_command(["picmg", "deactivate", (str(self.slot + PICMG_SLOT_OFFSET))])
+        except CalledProcessError:
+            pass
+        except TimeoutExpired as e:
+            print("reset: caught TimeoutExpired exception: {}".format(e))
+
+
+    def activate(self):
+        """
+        Function to activate AMC card
+
+        Args:
+            name: sensor name
+
+        Returns:
+            Nothing
+        """
+
+        # Activate the card
+        try:
+            result = self.mch_comms.call_ipmitool_command(["picmg", "activate", str(self.slot + PICMG_SLOT_OFFSET)])
+        except CalledProcessError:
+            pass
+        except TimeoutExpired as e:
+            print("reset: caught TimeoutExpired exception: {}".format(e))
+
     def reset(self):
         """
         Function to reset AMC card
@@ -825,28 +863,16 @@ class FRU():
         Returns:
             Nothing
         """
-
-        # Deactivate the card
-        try:
-            result = self.mch_comms.call_ipmitool_command(["picmg", "deactivate", (str(self.slot + PICMG_SLOT_OFFSET))])
-        except CalledProcessError:
-            pass
-        except TimeoutExpired as e:
-            print("reset: caught TimeoutExpired exception: {}".format(e))
-
+        # Deactivate card
+        self.deactivate()
         # TODO: Add a resetting status here to allow other reads to wait
         # See DIAG-68.
 
         # Wait for the card to shut down
         time.sleep(2.0)
 
-        # Activate the card
-        try:
-            result = self.mch_comms.call_ipmitool_command(["picmg", "activate", str(self.slot + PICMG_SLOT_OFFSET)])
-        except CalledProcessError:
-            pass
-        except TimeoutExpired as e:
-            print("reset: caught TimeoutExpired exception: {}".format(e))
+        #Activate card
+        self.activate()
 
 class MTCACrate():
     """
@@ -1501,6 +1527,36 @@ class MTCACrateReader():
         # Check if the card exists
         if (self.bus, self.slot) in self.crate.frus.keys():
             self.crate.frus[(self.bus, self.slot)].reset()
+
+    def activate(self, rec, report):
+        """
+        Activate AMC card
+
+        Args:
+            rec: pyDevSup record object
+
+        Returns:
+            Nothing
+        """
+
+        # Check if the card exists
+        if (self.bus, self.slot) in self.crate.frus.keys():
+            self.crate.frus[(self.bus, self.slot)].activate()
+
+    def deactivate(self, rec, report):
+        """
+        Deactivate AMC card
+
+        Args:
+            rec: pyDevSup record object
+
+        Returns:
+            Nothing
+        """
+
+        # Check if the card exists
+        if (self.bus, self.slot) in self.crate.frus.keys():
+            self.crate.frus[(self.bus, self.slot)].deactivate()
 
     def crate_reset(self, rec, report):
         """
