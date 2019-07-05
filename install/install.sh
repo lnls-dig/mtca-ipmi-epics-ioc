@@ -24,9 +24,10 @@ fi
 # Create INSTALL_DIR
 mkdir -p "$INSTALL_DIR"
 
+GEN=($(ls $TOP_DIR | grep -Ei "bin|lib|db|dbd|python"))
 # Copy generated EPICS files
-for dir in bin lib db dbd python*; do
-    cp -r "$TOP_DIR/$dir" "$INSTALL_DIR" || true
+for dir in "${GEN[@]}"; do
+    cp -r "$TOP_DIR/$dir" "$INSTALL_DIR"
 done
 
 ### *App files ###
