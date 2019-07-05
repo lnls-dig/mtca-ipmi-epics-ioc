@@ -10,7 +10,7 @@
 # UNIT: Power module number
 # CH:	Power module current channel
 
-record(ai, "$(P)$(S)Curr$(CH)-Mon") {
+record(ai, "$(P)$(R)$(S)Curr$(CH)-Mon") {
     field(DESC, "Ch$(CH) Current")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -20,18 +20,18 @@ record(ai, "$(P)$(S)Curr$(CH)-Mon") {
     info(archive,"monitor:5.0")
 }
 
-record(calcout, "$(P)$(S)Curr$(CH)-Calc") {
+record(calcout, "$(P)$(R)$(S)Curr$(CH)-Calc") {
     field(DESC, "Ch$(CH) current status calc")
-    field(INPA, "$(P)$(S)Curr$(CH)-Mon CPP")
+    field(INPA, "$(P)$(R)$(S)Curr$(CH)-Mon CPP")
     field(INPB, "0.1")
     field(CALC, "A>B?1:0")
-    field(OUT,  "$(P)$(S)Ch$(CH)-Sts PP")
+    field(OUT,  "$(P)$(R)$(S)Ch$(CH)-Sts PP")
     field(OOPT, "On Change")
 
     info(autosaveFields, "INPB")
 }
 
-record(bi, "$(P)$(S)Ch$(CH)-Sts") {
+record(bi, "$(P)$(R)$(S)Ch$(CH)-Sts") {
     field(DESC, "Ch$(CH) current status")
     field(ZNAM, "Off")
     field(ONAM, "On")

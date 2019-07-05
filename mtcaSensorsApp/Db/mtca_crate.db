@@ -6,7 +6,7 @@
 # Database for holding cratewide information
 #
 
-record(bo, "$(P)SensorScan-Cmd") {
+record(bo, "$(P)$(R)SensorScan-Cmd") {
     field(DESC, "Master record for scanning values")
     field(DTYP, "Python Device")
     field(SCAN, "5 second")
@@ -15,37 +15,37 @@ record(bo, "$(P)SensorScan-Cmd") {
     info(autosaveFields, "SCAN")
 }
 
-record(stringout, "$(P)Hostname-Cte") {
+record(stringout, "$(P)$(R)Hostname-Cte") {
     field(DESC, "Crate host name")
     field(DTYP, "Python Device")
     field(PINI, "YES")
     field(OUT,  "@MTCACrate set_host")
     field(VAL,  "$(MCH_HOST)")
-    field(FLNK, "$(P)Username-Cte")
+    field(FLNK, "$(P)$(R)Username-Cte")
 
     info(autosaveFields, "VAL")
 }
 
-record(stringout, "$(P)Username-Cte") {
+record(stringout, "$(P)$(R)Username-Cte") {
     field(DESC, "Crate user name")
     field(DTYP, "Python Device")
     field(OUT,  "@MTCACrate set_user")
-    field(FLNK, "$(P)Password-Cte")
+    field(FLNK, "$(P)$(R)Password-Cte")
 
     info(autosaveFields, "VAL")
 }
 
 # This may be able to move to an environment variable on the crate
-record(stringout, "$(P)Password-Cte") {
+record(stringout, "$(P)$(R)Password-Cte") {
     field(DESC, "Crate password")
     field(DTYP, "Python Device")
     field(OUT,  "@MTCACrate set_password")
-    field(FLNK, "$(P)ReadFRUList-Cmd")
+    field(FLNK, "$(P)$(R)ReadFRUList-Cmd")
 
     info(autosaveFields, "VAL")
 }
 
-record(bo, "$(P)ReadFRUList-Cmd") {
+record(bo, "$(P)$(R)ReadFRUList-Cmd") {
     field(DESC, "Get crate FRU list")
     field(DTYP, "Python Device")
     field(OUT,  "@MTCACrate get_fru_list")
@@ -54,38 +54,38 @@ record(bo, "$(P)ReadFRUList-Cmd") {
     info(autosaveFields, "SCAN")
 }
 
-record(bo, "$(P)Reset-Cmd") {
+record(bo, "$(P)$(R)Reset-Cmd") {
     field(DESC, "Reset crate")
     field(DTYP, "Python Device")
     field(OUT,  "@MTCACrate crate_reset")
     field(SCAN, "Passive")
 }
 
-record(stringin, "$(P)CrateID-Cte") {
+record(stringin, "$(P)$(R)CrateID-Cte") {
     field(DESC, "Crate ID")
     field(VAL,  "$(CRATE_ID)")
     field(PINI, "YES")
 }
 
-record(stringin, "$(P)RackID-Cte") {
+record(stringin, "$(P)$(R)RackID-Cte") {
     field(DESC, "Rack ID")
     field(VAL,  "$(RACK_ID)")
     field(PINI, "YES")
 }
 
 # Calculate fan speed averages
-record(calcout, "$(P)FanFrontAvg-Calc") {
+record(calcout, "$(P)$(R)FanFrontAvg-Calc") {
     field(DESC, "Front fan average calculation")
-    field(INPA, "$(P)$(CU1=CU01)FanFrontAvg-Mon CPP")
-    field(INPB, "$(P)$(CU2=CU02)FanFrontAvg-Mon CPP")
+    field(INPA, "$(P)$(R)$(CU1=CU01)FanFrontAvg-Mon CPP")
+    field(INPB, "$(P)$(R)$(CU2=CU02)FanFrontAvg-Mon CPP")
     field(CALC, "(A+B)/2")
     field(OOPT, "On Change")
     field(DOPT, "Use CALC")
-    field(OUT,  "$(P)FanFrontAvg-Mon PP")
+    field(OUT,  "$(P)$(R)FanFrontAvg-Mon PP")
     field(PINI, "NO")
 }
 
-record(ai, "$(P)FanFrontAvg-Mon") {
+record(ai, "$(P)$(R)FanFrontAvg-Mon") {
     field(DESC, "Front fan average")
     field(EGU,  "RPM")
     field(PREC, "0")
@@ -99,18 +99,18 @@ record(ai, "$(P)FanFrontAvg-Mon") {
     field(HHSV, "MAJOR")
 }
 
-record(calcout, "$(P)FanRearAvg-Calc") {
+record(calcout, "$(P)$(R)FanRearAvg-Calc") {
     field(DESC, "Rear fan average calculation")
-    field(INPA, "$(P)$(CU1=CU01)FanRearAvg-Mon CPP")
-    field(INPB, "$(P)$(CU2=CU02)FanRearAvg-Mon CPP")
+    field(INPA, "$(P)$(R)$(CU1=CU01)FanRearAvg-Mon CPP")
+    field(INPB, "$(P)$(R)$(CU2=CU02)FanRearAvg-Mon CPP")
     field(CALC, "(A+B)/2")
     field(OOPT, "On Change")
     field(DOPT, "Use CALC")
-    field(OUT,  "$(P)FanRearAvg-Mon PP")
+    field(OUT,  "$(P)$(R)FanRearAvg-Mon PP")
     field(PINI, "NO")
 }
 
-record(ai, "$(P)FanRearAvg-Mon") {
+record(ai, "$(P)$(R)FanRearAvg-Mon") {
     field(DESC, "Rear fan average")
     field(EGU,  "RPM")
     field(PREC, "0")
@@ -124,18 +124,18 @@ record(ai, "$(P)FanRearAvg-Mon") {
     field(HHSV, "MAJOR")
 }
 
-record(calcout, "$(P)FanAvg-Calc") {
+record(calcout, "$(P)$(R)FanAvg-Calc") {
     field(DESC, "Crate fan average calculation")
-    field(INPA, "$(P)$(CU1=CU01)FanAvg-Mon CPP")
-    field(INPB, "$(P)$(CU2=CU02)FanAvg-Mon CPP")
+    field(INPA, "$(P)$(R)$(CU1=CU01)FanAvg-Mon CPP")
+    field(INPB, "$(P)$(R)$(CU2=CU02)FanAvg-Mon CPP")
     field(CALC, "(A+B)/2")
     field(OOPT, "On Change")
     field(DOPT, "Use CALC")
-    field(OUT,  "$(P)FanAvg-Mon PP")
+    field(OUT,  "$(P)$(R)FanAvg-Mon PP")
     field(PINI, "NO")
 }
 
-record(ai, "$(P)FanAvg-Mon") {
+record(ai, "$(P)$(R)FanAvg-Mon") {
     field(DESC, "Crate fan average")
     field(EGU,  "RPM")
     field(PREC, "0")
@@ -150,21 +150,21 @@ record(ai, "$(P)FanAvg-Mon") {
 }
 
 # Calculate the average inlet temperature
-record(calcout, "$(P)TempInletAvg-Calc") {
+record(calcout, "$(P)$(R)TempInletAvg-Calc") {
     field(DESC, "Crate average inlet temp calc")
-    field(INPA, "$(P)PM02TempInlet-Mon CPP")
-    field(INPB, "$(P)CU02Temp1-Mon CPP")
-    field(INPC, "$(P)CU02Temp2-Mon CPP")
-    field(INPD, "$(P)CU01Temp1-Mon CPP")
-    field(INPE, "$(P)CU01Temp2-Mon CPP")
+    field(INPA, "$(P)$(R)PM02TempInlet-Mon CPP")
+    field(INPB, "$(P)$(R)CU02Temp1-Mon CPP")
+    field(INPC, "$(P)$(R)CU02Temp2-Mon CPP")
+    field(INPD, "$(P)$(R)CU01Temp1-Mon CPP")
+    field(INPE, "$(P)$(R)CU01Temp2-Mon CPP")
     field(CALC, "(A-4+B+C+D+E-1.5)/5")
     field(OOPT, "On Change")
     field(DOPT, "Use CALC")
-    field(OUT,  "$(P)TempInletAvg-Mon PP")
+    field(OUT,  "$(P)$(R)TempInletAvg-Mon PP")
     field(PINI, "YES")
 }
 
-record(ai, "$(P)TempInletAvg-Mon") {
+record(ai, "$(P)$(R)TempInletAvg-Mon") {
     field(DESC, "Crate average inlet temp")
     field(EGU,  "C")
     field(PREC, "1")

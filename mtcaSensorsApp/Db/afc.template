@@ -9,7 +9,7 @@
 # P:		PV prefix
 # AMC_SLOT:	AMC slot number
 
-record(ai, "$(P)$(S)FMC1Volt12V-Mon") {
+record(ai, "$(P)$(R)$(S)FMC1Volt12V-Mon") {
 	field(DESC, "FMC1 12 V supply")
 	field(DTYP, "Python Device")
 	field(SCAN, "I/O Intr")
@@ -19,7 +19,7 @@ record(ai, "$(P)$(S)FMC1Volt12V-Mon") {
 	info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)FMC1VoltVADJ-Mon") {
+record(ai, "$(P)$(R)$(S)FMC1VoltVADJ-Mon") {
 	field(DESC, "FMC1 2.5 V supply")
 	field(DTYP, "Python Device")
 	field(SCAN, "I/O Intr")
@@ -29,7 +29,7 @@ record(ai, "$(P)$(S)FMC1VoltVADJ-Mon") {
 	info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)FMC1Volt3V3-Mon") {
+record(ai, "$(P)$(R)$(S)FMC1Volt3V3-Mon") {
 	field(DESC, "FMC1 3.3 V supply")
 	field(DTYP, "Python Device")
 	field(SCAN, "I/O Intr")
@@ -39,7 +39,7 @@ record(ai, "$(P)$(S)FMC1Volt3V3-Mon") {
 	info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)FMC1Curr12V-Mon") {
+record(ai, "$(P)$(R)$(S)FMC1Curr12V-Mon") {
 	field(DESC, "FMC1 12V Current")
 	field(DTYP, "Python Device")
 	field(SCAN, "I/O Intr")
@@ -49,7 +49,7 @@ record(ai, "$(P)$(S)FMC1Curr12V-Mon") {
 	info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)FMC1CurrVADJ-Mon") {
+record(ai, "$(P)$(R)$(S)FMC1CurrVADJ-Mon") {
 	field(DESC, "FMC1 2.5V current")
 	field(DTYP, "Python Device")
 	field(SCAN, "I/O Intr")
@@ -59,7 +59,7 @@ record(ai, "$(P)$(S)FMC1CurrVADJ-Mon") {
 	info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)FMC1Curr3V3-Mon") {
+record(ai, "$(P)$(R)$(S)FMC1Curr3V3-Mon") {
 	field(DESC, "FMC1 3.3V current")
 	field(DTYP, "Python Device")
 	field(SCAN, "I/O Intr")
@@ -69,7 +69,7 @@ record(ai, "$(P)$(S)FMC1Curr3V3-Mon") {
 	info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)FMC2Volt12V-Mon") {
+record(ai, "$(P)$(R)$(S)FMC2Volt12V-Mon") {
 	field(DESC, "FMC2 12 V supply")
 	field(DTYP, "Python Device")
 	field(SCAN, "I/O Intr")
@@ -79,7 +79,7 @@ record(ai, "$(P)$(S)FMC2Volt12V-Mon") {
 	info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)FMC2VoltVADJ-Mon") {
+record(ai, "$(P)$(R)$(S)FMC2VoltVADJ-Mon") {
 	field(DESC, "FMC2 2.5 V supply")
 	field(DTYP, "Python Device")
 	field(SCAN, "I/O Intr")
@@ -89,7 +89,7 @@ record(ai, "$(P)$(S)FMC2VoltVADJ-Mon") {
 	info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)FMC2Volt3V3-Mon") {
+record(ai, "$(P)$(R)$(S)FMC2Volt3V3-Mon") {
 	field(DESC, "FMC2 3.3 V supply")
 	field(DTYP, "Python Device")
 	field(SCAN, "I/O Intr")
@@ -99,7 +99,7 @@ record(ai, "$(P)$(S)FMC2Volt3V3-Mon") {
 	info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)FMC2Curr12V-Mon") {
+record(ai, "$(P)$(R)$(S)FMC2Curr12V-Mon") {
 	field(DESC, "FMC2 12V Current")
 	field(DTYP, "Python Device")
 	field(SCAN, "I/O Intr")
@@ -109,7 +109,7 @@ record(ai, "$(P)$(S)FMC2Curr12V-Mon") {
 	info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)FMC2CurrVADJ-Mon") {
+record(ai, "$(P)$(R)$(S)FMC2CurrVADJ-Mon") {
 	field(DESC, "FMC2 2.5V current")
 	field(DTYP, "Python Device")
 	field(SCAN, "I/O Intr")
@@ -119,7 +119,7 @@ record(ai, "$(P)$(S)FMC2CurrVADJ-Mon") {
 	info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)FMC2Curr3V3-Mon") {
+record(ai, "$(P)$(R)$(S)FMC2Curr3V3-Mon") {
 	field(DESC, "FMC2 3.3V current")
 	field(DTYP, "Python Device")
 	field(SCAN, "I/O Intr")
@@ -129,7 +129,7 @@ record(ai, "$(P)$(S)FMC2Curr3V3-Mon") {
 	info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)TempFPGA-Mon") {
+record(ai, "$(P)$(R)$(S)TempFPGA-Mon") {
 	field(DESC, "FPGA Die Temperature")
 	field(DTYP, "Python Device")
 	field(SCAN, "I/O Intr")
@@ -139,7 +139,7 @@ record(ai, "$(P)$(S)TempFPGA-Mon") {
 	info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)TempUC-Mon") {
+record(ai, "$(P)$(R)$(S)TempUC-Mon") {
 	field(DESC, "Temperature uC")
 	field(DTYP, "Python Device")
 	field(SCAN, "I/O Intr")
@@ -149,7 +149,7 @@ record(ai, "$(P)$(S)TempUC-Mon") {
 	info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)TempClkSw-Mon") {
+record(ai, "$(P)$(R)$(S)TempClkSw-Mon") {
 	field(DESC, "Temperature Clock Switch")
 	field(DTYP, "Python Device")
 	field(SCAN, "I/O Intr")
@@ -159,7 +159,7 @@ record(ai, "$(P)$(S)TempClkSw-Mon") {
 	info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)TempDCDC-Mon") {
+record(ai, "$(P)$(R)$(S)TempDCDC-Mon") {
 	field(DESC, "Temperature DCDC")
 	field(DTYP, "Python Device")
 	field(SCAN, "I/O Intr")
@@ -169,7 +169,7 @@ record(ai, "$(P)$(S)TempDCDC-Mon") {
 	info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)TempRAM-Mon") {
+record(ai, "$(P)$(R)$(S)TempRAM-Mon") {
 	field(DESC, "Temperature RAM")
 	field(DTYP, "Python Device")
 	field(SCAN, "I/O Intr")
@@ -179,14 +179,14 @@ record(ai, "$(P)$(S)TempRAM-Mon") {
 	info(archive,"monitor:5.0")
 }
 
-record(stringin, "$(P)$(S)Name-Cte") {
+record(stringin, "$(P)$(R)$(S)BoardName-Cte") {
 	field(DESC, "Card name")
 	field(DTYP, "Python Device")
 	field(SCAN, "I/O Intr")
 	field(INP,  "@MTCACrate get_name amc $(AMC_SLOT)")
 }
 
-record(ai, "$(P)$(S)Slot-Cte") {
+record(ai, "$(P)$(R)$(S)Slot-Cte") {
 	field(DESC, "Slot number")
 	field(DTYP, "Python Device")
 	field(SCAN, "I/O Intr")
@@ -195,7 +195,7 @@ record(ai, "$(P)$(S)Slot-Cte") {
 	field(EGU,  "None")
 }
 
-record(ai, "$(P)$(S)HotSwap-Mon") {
+record(ai, "$(P)$(R)$(S)HotSwap-Mon") {
 	field(DESC, "Hot swap")
 	field(DTYP, "Python Device")
 	field(SCAN, "I/O Intr")
@@ -204,9 +204,9 @@ record(ai, "$(P)$(S)HotSwap-Mon") {
 	field(EGU,  "None")
 }
 
-record(mbbi, "$(P)$(S)HotSwap-Sts") {
+record(mbbi, "$(P)$(R)$(S)HotSwap-Sts") {
 	field(DESC, "Hot swap status")
-	field(INP,  "$(P)$(S)HotSwap-Mon CPP")
+	field(INP,  "$(P)$(R)$(S)HotSwap-Mon CPP")
 	field(ZRVL, "0")
 	field(ZRST, "N/A")
 	field(ZRSV, "NO_ALARM")
@@ -218,7 +218,7 @@ record(mbbi, "$(P)$(S)HotSwap-Sts") {
 	field(TWSV, "MAJOR")
 }
 
-record(mbbi, "$(P)$(S)Alarm-Sts") {
+record(mbbi, "$(P)$(R)$(S)Alarm-Sts") {
 	field(DESC, "Slot alarm status")
 	field(DTYP, "Python Device")
 	field(SCAN, "I/O Intr")
@@ -242,7 +242,7 @@ record(mbbi, "$(P)$(S)Alarm-Sts") {
 	info(archive,"monitor:5.0")
 }
 
-record(mbbi, "$(P)$(S)Comm-Sts") {
+record(mbbi, "$(P)$(R)$(S)Comm-Sts") {
 	field(DESC, "$(S) communications status")
 	field(DTYP, "Python Device")
 	field(SCAN, "I/O Intr")
@@ -260,16 +260,16 @@ record(mbbi, "$(P)$(S)Comm-Sts") {
 	info(archive,"monitor:5.0")
 }
 
-record(bo, "$(P)$(S)Reset-Cmd") {
+record(bo, "$(P)$(R)$(S)Reset-Cmd") {
 	field(DESC, "Reset $(S)")
 	field(DTYP, "Python Device")
 	field(OUT,  "@MTCACrate reset amc $(AMC_SLOT)")
 }
 
-record(bi, "$(P)$(S)Power-Sts") {
+record(bi, "$(P)$(R)$(S)Power-Sts") {
 	field(DESC, "$(S) card power status")
 	field(ZNAM, "Off")
 	field(ONAM, "On")
-	field(INP,  "$(P)$(PM)Ch$(PM_CH)-Sts CPP")
+	field(INP,  "$(P)$(R)$(PM)Ch$(PM_CH)-Sts CPP")
 }
 

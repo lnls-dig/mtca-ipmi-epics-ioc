@@ -9,7 +9,7 @@
 # P:    PV prefix
 # UNIT: Power module number
 
-record(ai, "$(P)$(S)Volt12V-Mon") {
+record(ai, "$(P)$(R)$(S)Volt12V-Mon") {
     field(DESC, "12 V supply (0)")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -19,7 +19,7 @@ record(ai, "$(P)$(S)Volt12V-Mon") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)Volt12V1-Mon") {
+record(ai, "$(P)$(R)$(S)Volt12V1-Mon") {
     field(DESC, "12 V supply (1)")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -29,7 +29,7 @@ record(ai, "$(P)$(S)Volt12V1-Mon") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)Volt5V-Mon") {
+record(ai, "$(P)$(R)$(S)Volt5V-Mon") {
     field(DESC, "5.0 V supply")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -39,7 +39,7 @@ record(ai, "$(P)$(S)Volt5V-Mon") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)Volt5V1-Mon") {
+record(ai, "$(P)$(R)$(S)Volt5V1-Mon") {
     field(DESC, "5.0 V supply")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -49,7 +49,7 @@ record(ai, "$(P)$(S)Volt5V1-Mon") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)Volt3V3-Mon") {
+record(ai, "$(P)$(R)$(S)Volt3V3-Mon") {
     field(DESC, "3.3 V supply")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -59,7 +59,7 @@ record(ai, "$(P)$(S)Volt3V3-Mon") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)TempInlet-Mon") {
+record(ai, "$(P)$(R)$(S)TempInlet-Mon") {
     field(DESC, "Temperature inlet")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -69,7 +69,7 @@ record(ai, "$(P)$(S)TempInlet-Mon") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)TempOutlet-Mon") {
+record(ai, "$(P)$(R)$(S)TempOutlet-Mon") {
     field(DESC, "Temperature outlet")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -79,7 +79,7 @@ record(ai, "$(P)$(S)TempOutlet-Mon") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)Temp1-Mon") {
+record(ai, "$(P)$(R)$(S)Temp1-Mon") {
     field(DESC, "Temperature 1")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -89,7 +89,7 @@ record(ai, "$(P)$(S)Temp1-Mon") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)Temp2-Mon") {
+record(ai, "$(P)$(R)$(S)Temp2-Mon") {
     field(DESC, "Temperature 2")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -99,7 +99,7 @@ record(ai, "$(P)$(S)Temp2-Mon") {
     info(archive,"monitor:5.0")
 }
 
-record(ai, "$(P)$(S)CurrTotal-Mon") {
+record(ai, "$(P)$(R)$(S)CurrTotal-Mon") {
     field(DESC, "Total current")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -109,14 +109,14 @@ record(ai, "$(P)$(S)CurrTotal-Mon") {
     info(archive,"monitor:5.0")
 }
 
-record(stringin, "$(P)$(S)Name-Cte") {
+record(stringin, "$(P)$(R)$(S)BoardName-Cte") {
     field(DESC, "Card name")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
     field(INP,  "@MTCACrate get_name pm $(UNIT)")
 }
 
-record(ai, "$(P)$(S)Slot-Cte") {
+record(ai, "$(P)$(R)$(S)Slot-Cte") {
     field(DESC, "Slot number")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -136,7 +136,7 @@ record(ai, "$(P)$(S)Slot-Cte") {
     #field(OSV,  "NO_ALARM")
 #}
 
-record(mbbi, "$(P)$(S)SlotAlarm-Sts") {
+record(mbbi, "$(P)$(R)$(S)SlotAlarm-Sts") {
     field(DESC, "Slot alarm status")
     field(DTYP, "Python Device")
     field(SCAN, "I/O Intr")
@@ -160,19 +160,19 @@ record(mbbi, "$(P)$(S)SlotAlarm-Sts") {
     info(archive,"monitor:5.0")
 }
 
-record(calcout, "$(P)$(S)Power-Calc") {
+record(calcout, "$(P)$(R)$(S)Power-Calc") {
     field(DESC, "Power module power calculation")
     # Based on conversation with Scott Cogan, use nominal 12 VDC
     field(INPA, "12")
     # Uncomment this line and comment above line to use sensor voltage
-    #field(INPA, "$(P)$(S)Volt12V-Mon CPP")
-    field(INPB, "$(P)$(S)CurrTotal-Mon CPP")
+    #field(INPA, "$(P)$(R)$(S)Volt12V-Mon CPP")
+    field(INPB, "$(P)$(R)$(S)CurrTotal-Mon CPP")
     field(CALC, "A*B")
     field(OOPT, "On Change")
-    field(OUT,  "$(P)$(S)Power-Mon PP")
+    field(OUT,  "$(P)$(R)$(S)Power-Mon PP")
 }
 
-record(ai, "$(P)$(S)Power-Mon") {
+record(ai, "$(P)$(R)$(S)Power-Mon") {
     field(DESC, "Power module power")
     field(EGU,  "W")
     field(PREC, "1")
@@ -180,7 +180,7 @@ record(ai, "$(P)$(S)Power-Mon") {
     info(archive,"monitor:5.0")
 }
 
-record(bi, "$(P)$(S)Comm-Sts") {
+record(bi, "$(P)$(R)$(S)Comm-Sts") {
 	field(DESC, "$(S) communications status")
 	field(DTYP, "Python Device")
 	field(SCAN, "I/O Intr")
