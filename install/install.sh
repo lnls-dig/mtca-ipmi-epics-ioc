@@ -25,7 +25,7 @@ fi
 mkdir -p "$INSTALL_DIR"
 
 # Copy generated EPICS files
-for dir in bin lib db dbd; do
+for dir in bin lib db dbd python*; do
     cp -r "$TOP_DIR/$dir" "$INSTALL_DIR" || true
 done
 
