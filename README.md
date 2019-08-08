@@ -1,13 +1,13 @@
 # MTCA sensor IOC
 
-## Summary 
+## Summary
 
 This IOC monitors the sensors in an MTCA crate.
 
 ## Prerequisites
 
 ### Command line tools
-- ``ipmitool`` 
+- ``ipmitool``
 
 Needed libs for ipmitool:
 
@@ -52,12 +52,24 @@ For Python2.7 systems, the ``subprocess32`` module needs to be installed:
 
 ``sudo pip install subprocess32``
 
+## Compilation
+
+In order to compile this IOC, the user must have the env variable `PYTHON` set. Then, `make` should take care of everything else.
+
+Example:
+
+    export PYTHON=python2.7
+    make
+
+or
+
+    PYTHON=python3.5 make
+
 ## Usage
 
 For each new chassis, create a new directory under iocBoot. Copy one of the
 existing crate directories (e.g., ioc-mtca01). Modify the environment variables
-for the new crate. 
+for the new crate.
 
 Most of the IOC commands are in the common startup script located in
 $(TOP)/iocBoot/ioc-mtca-common/st-mtca-common.cmd
-
