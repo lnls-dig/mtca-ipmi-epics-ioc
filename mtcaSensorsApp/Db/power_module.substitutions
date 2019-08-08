@@ -1,0 +1,36 @@
+# File: power_modules.substitutions
+# Date: 2017-06-26
+# Author: Wayne Lewis
+#
+# Description:
+# Substitution file for generating power modules
+#
+
+file power_module_common.template
+{
+        pattern
+        { S, UNIT }
+        { $(S), $(UNIT) }
+}
+
+file power_module_channel.template
+{
+        pattern
+        { S,    UNIT,    CH }
+        { $(S), $(UNIT), "01" }
+        { $(S), $(UNIT), "02" }
+        { $(S), $(UNIT), "03" }
+        { $(S), $(UNIT), "04" }
+        { $(S), $(UNIT), "05" }
+        { $(S), $(UNIT), "06" }
+        { $(S), $(UNIT), "07" }
+        { $(S), $(UNIT), "08" }
+        { $(S), $(UNIT), "09" }
+        { $(S), $(UNIT), "10" }
+        { $(S), $(UNIT), "11" }
+        { $(S), $(UNIT), "12" }
+        { $(S), $(UNIT), "13" }
+        { $(S), $(UNIT), "14" }
+        { $(S), $(UNIT), "15" }
+        { $(S), $(UNIT), "16" }
+}
