@@ -829,9 +829,9 @@ class FRU():
         try:
             result = self.mch_comms.call_ipmitool_command(["picmg", "deactivate", (str(self.slot + PICMG_SLOT_OFFSET))])
         except CalledProcessError:
-            pass
+            print("deactivate: caught CalledProcessError exception: {}".format(e))
         except TimeoutExpired as e:
-            print("reset: caught TimeoutExpired exception: {}".format(e))
+            print("deactivate: caught TimeoutExpired exception: {}".format(e))
 
 
     def activate(self):
@@ -849,9 +849,9 @@ class FRU():
         try:
             result = self.mch_comms.call_ipmitool_command(["picmg", "activate", str(self.slot + PICMG_SLOT_OFFSET)])
         except CalledProcessError:
-            pass
+            print("activate: caught CalledProcessError exception: {}".format(e))
         except TimeoutExpired as e:
-            print("reset: caught TimeoutExpired exception: {}".format(e))
+            print("activate: caught TimeoutExpired exception: {}".format(e))
 
     def reset(self):
         """
