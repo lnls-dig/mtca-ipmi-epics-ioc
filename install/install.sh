@@ -52,4 +52,12 @@ for iocboot in "${IOCBOOTS[@]}"; do
     done
 done
 
+# Other config files
+CFG_FILES=($(ls $TOP_DIR | grep "inputrc"))
+for cfg in "${CFG_FILES[@]}"; do
+    echo "Installing "$cfg "file"
+    # Copy config files
+    cp "$TOP_DIR/$cfg" "$INSTALL_DIR"
+done
+
 echo EPICS IOC installed in "$INSTALL_DIR"

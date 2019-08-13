@@ -16,7 +16,8 @@ dbLoadRecords("${TOP}/db/mtca_crate.db","P=$(P),R=$(R),MCH_HOST=$(MCH_HOST),CRAT
 dbLoadRecords("${TOP}/db/amc_cards.db","P=$(P),R=$(R),PM=$(PM=PM02)")
 dbLoadRecords("${TOP}/db/cooling_unit.template","P=$(P),R=$(R),S=$(CU1=CU01),UNIT=1")
 dbLoadRecords("${TOP}/db/cooling_unit.template","P=$(P),R=$(R),S=$(CU2=CU02),UNIT=2")
-dbLoadRecords("${TOP}/db/power_modules.db","P=$(P),R=$(R)")
+dbLoadRecords("${TOP}/db/power_module.db","P=$(P),R=$(R),S=PM02,UNIT=2")
+dbLoadRecords("${TOP}/db/power_module.db","P=$(P),R=$(R),S=PM04,UNIT=4")
 dbLoadRecords("${TOP}/db/mch.db","P=$(P),R=$(R),PM=$(PM=PM02)")
 
 iocInit()

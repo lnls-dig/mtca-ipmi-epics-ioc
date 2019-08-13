@@ -13,7 +13,7 @@ include $(TOP)/configure/CONFIG
 DB += mtca_crate.db
 DB += amc_cards.db
 DB += cooling_unit.template
-DB += power_modules.db
+DB += power_module.db
 DB += mch.db
 
 #----------------------------------------------------

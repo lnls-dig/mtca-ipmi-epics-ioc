@@ -1,13 +1,13 @@
 # MTCA sensor IOC
 
-## Summary 
+## Summary
 
 This IOC monitors the sensors in an MTCA crate.
 
 ## Prerequisites
 
 ### Command line tools
-- ``ipmitool`` 
+- ``ipmitool``
 
 Needed libs for ipmitool:
 
@@ -27,7 +27,9 @@ jessie.
 https://sourceforge.net/projects/ipmitool/files/ipmitool/1.8.17/ipmitool-1.8.17.tar.bz2
 
 
-1.8.18 breaks the sensor value readings. 1.8.18 is the latest release as of 2017-09-26.
+1.8.18 works with NAT MCH v2.19.5 or older, but the option "Enable IPMI Compatibility" must be set.
+
+https://sourceforge.net/projects/ipmitool/files/ipmitool/1.8.18/ipmitool-1.8.18.tar.bz2
 
 - ``gnome-terminal``
 
@@ -56,7 +58,7 @@ For Python2.7 systems, the ``subprocess32`` module needs to be installed:
 
 For each new chassis, create a new directory under iocBoot. Copy one of the
 existing crate directories (e.g., ioc-mtca01). Modify the environment variables
-for the new crate. 
+for the new crate.
 
 Most of the IOC commands are in the common startup script located in
 $(TOP)/iocBoot/ioc-mtca-common/st-mtca-common.cmd
