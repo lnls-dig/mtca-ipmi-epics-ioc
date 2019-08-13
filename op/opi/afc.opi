@@ -1162,13 +1162,6 @@ $(pv_value)</tooltip>
         <confirm_message></confirm_message>
         <description></description>
       </action>
-      <action type="WRITE_PV">
-        <pv_name>$(P)$(R)$(MOD)Deactivate-Cmd</pv_name>
-        <value>1</value>
-        <timeout>10</timeout>
-        <confirm_message></confirm_message>
-        <description></description>
-      </action>
     </actions>
     <alarm_pulsing>false</alarm_pulsing>
     <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
@@ -1196,24 +1189,6 @@ $(pv_value)</tooltip>
     <pv_name></pv_name>
     <pv_value />
     <rules>
-      <rule name="Action_change" prop_id="push_action_index" out_exp="false">
-        <exp bool_exp="pv0 == 0">
-          <value>0</value>
-        </exp>
-        <exp bool_exp="pv0 == 1">
-          <value>1</value>
-        </exp>
-        <pv trig="true">$(P)$(R)$(MOD)Power-Sts</pv>
-      </rule>
-      <rule name="Label_change" prop_id="text" out_exp="false">
-        <exp bool_exp="pv0 == 0">
-          <value>Enable</value>
-        </exp>
-        <exp bool_exp="pv0 == 1">
-          <value>Disable</value>
-        </exp>
-        <pv trig="true">$(P)$(R)$(MOD)Power-Sts</pv>
-      </rule>
       <rule name="Disable" prop_id="enabled" out_exp="false">
         <exp bool_exp="pv0 == 0 || pv0 == 2">
           <value>false</value>
@@ -1242,7 +1217,7 @@ $(pv_value)</tooltip>
   <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
     <actions hook="false" hook_all="false">
       <action type="WRITE_PV">
-        <pv_name>$(P)$(R)$(MOD)Reset-Cmd</pv_name>
+        <pv_name>$(P)$(R)$(MOD)Deactivate-Cmd</pv_name>
         <value>1</value>
         <timeout>10</timeout>
         <confirm_message></confirm_message>
@@ -1289,7 +1264,7 @@ $(pv_value)</tooltip>
     </scale_options>
     <scripts />
     <style>0</style>
-    <text>Reset</text>
+    <text>Disable</text>
     <toggle_button>false</toggle_button>
     <tooltip>$(pv_name)
 $(pv_value)</tooltip>
@@ -1299,5 +1274,66 @@ $(pv_value)</tooltip>
     <wuid>1fd270f4:16bc2fa6e70:-61f4</wuid>
     <x>0</x>
     <y>486</y>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
+    <actions hook="false" hook_all="false">
+      <action type="WRITE_PV">
+        <pv_name>$(P)$(R)$(MOD)Reset-Cmd</pv_name>
+        <value>1</value>
+        <timeout>10</timeout>
+        <confirm_message></confirm_message>
+        <description></description>
+      </action>
+    </actions>
+    <alarm_pulsing>false</alarm_pulsing>
+    <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+    <background_color>
+      <color red="240" green="240" blue="240" />
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255" />
+    </border_color>
+    <border_style>0</border_style>
+    <border_width>1</border_width>
+    <enabled>true</enabled>
+    <font>
+      <opifont.name fontName="Ubuntu" height="11" style="0" pixels="false">Default</opifont.name>
+    </font>
+    <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+    <foreground_color>
+      <color red="0" green="0" blue="0" />
+    </foreground_color>
+    <height>25</height>
+    <image></image>
+    <name>Action Button_2</name>
+    <push_action_index>0</push_action_index>
+    <pv_name></pv_name>
+    <pv_value />
+    <rules>
+      <rule name="Disable" prop_id="enabled" out_exp="false">
+        <exp bool_exp="pv0 == 0 || pv0 == 2">
+          <value>false</value>
+        </exp>
+        <pv trig="true">$(P)$(R)$(MOD)Comm-Sts</pv>
+      </rule>
+    </rules>
+    <scale_options>
+      <width_scalable>true</width_scalable>
+      <height_scalable>true</height_scalable>
+      <keep_wh_ratio>false</keep_wh_ratio>
+    </scale_options>
+    <scripts />
+    <style>0</style>
+    <text>Reset</text>
+    <toggle_button>false</toggle_button>
+    <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+    <visible>true</visible>
+    <widget_type>Action Button</widget_type>
+    <width>65</width>
+    <wuid>264deef9:16c8c36c9ca:-7b5b</wuid>
+    <x>0</x>
+    <y>516</y>
   </widget>
 </display>
