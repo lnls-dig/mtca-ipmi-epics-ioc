@@ -27,7 +27,9 @@ jessie.
 https://sourceforge.net/projects/ipmitool/files/ipmitool/1.8.17/ipmitool-1.8.17.tar.bz2
 
 
-1.8.18 breaks the sensor value readings. 1.8.18 is the latest release as of 2017-09-26.
+1.8.18 works with NAT MCH v2.19.5 or older, but the option "Enable IPMI Compatibility" must be set.
+
+https://sourceforge.net/projects/ipmitool/files/ipmitool/1.8.18/ipmitool-1.8.18.tar.bz2
 
 - ``gnome-terminal``
 
@@ -52,19 +54,6 @@ For Python2.7 systems, the ``subprocess32`` module needs to be installed:
 
 ``sudo pip install subprocess32``
 
-## Compilation
-
-In order to compile this IOC, the user must have the env variable `PYTHON` set. Then, `make` should take care of everything else.
-
-Example:
-
-    export PYTHON=python2.7
-    make
-
-or
-
-    PYTHON=python3.5 make
-
 ## Usage
 
 For each new chassis, create a new directory under iocBoot. Copy one of the
@@ -73,3 +62,4 @@ for the new crate.
 
 Most of the IOC commands are in the common startup script located in
 $(TOP)/iocBoot/ioc-mtca-common/st-mtca-common.cmd
+
